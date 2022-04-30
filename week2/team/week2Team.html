@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 2 Team Assignment</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <h2>1</h2>
+  <input id="input1" type="text" />
+  <button id="button1" onclick="readInput1()">Click</button>
+  <div id="output1"></div>
+
+  <h2>2</h2>
+  <input id="input2" type="text" />
+  <button id="button2" onclick="sumInput2()">Sum</button>
+  <div id="output2"></div>
+
+  <h2>3</h2>
+  <input id="input3" placeholder="enter a number" type="number" />
+  <input id="input4" placeholder="enter a number" type="number" />
+  <button id="button3" onclick="addInputs()">+</button>
+  <div id="output3"></div>
+
+  <h2>4</h2>
+  <input id="stretchNumber1" placeholder="enter a number" type="number" /><input id="stretchNumber2"
+    placeholder="enter a number" type="number" />
+  <!-- Notice below that all of our buttons are calling the same function...but passing in the name of another function as the argument. Notice also what is missing...when you pass a function as a callback you DO NOT include the ()! If you add the () the function will get executed immediately instead of later like we would like. -->
+  <button id="stretchAdd" onclick="performOperation(add2)">+</button>
+  <button id="stretchSub" onclick="performOperation(sub2)">-</button>
+  <button id="stretchMult" onclick="performOperation(mult2)">*</button>
+  <div id="stretchOutput"></div>
+
+  <script>
+    function readInput1() {
+      const input = document.getElementById('input1').value;
+      const output = document.getElementById('output1');
+      output.innerHTML = input;
+    }
+
+    function sumInput2() {
+      const input = document.getElementById('input2').value;
+      const output = document.getElementById('output2');
+      let number = parseInt(input);
+      if (number !== NaN) {
+        output.innerHTML = sum(number);
+      } 
+    }
+
+    function sum(num) {
+      let answer = 0;
+      for (let i = 1; i <= num; i++) {
+        answer += i;
+      }
+      return answer;
+    }
+
+    function add(num1, num2) {
+      let res = num1 + num2
+      return res
+    }
+
+    function addInputs() {
+      const input3 = document.getElementById('input3').value;
+      const input4 = document.getElementById('input4').value;
+      const output = document.getElementById('output3');
+      let number1 = parseFloat(input3);
+      let number2 = parseFloat(input4);
+      if ((number1 !== NaN) & (number2 !== NaN)) {
+        const total = add(number1, number2);
+        output.innerHTML = total;
+      }
+    }
+
+     // stretch solution
+      function getNum(numId) {
+        const number = document.getElementById(numId).value;
+        const numberFloat = parseFloat(number);
+        if (numberFloat !== NaN) {
+          return numberFloat;
+        } else return 0;
+      }
+      function updateTotal(value) {
+        const outputElement = document.getElementById('stretchOutput');
+        outputElement.innerHTML = 'Total: ' + value;
+      }
+      // function declaration
+      function add2(num1, num2) {
+        return num1 + num2;
+      }
+      // function expression
+      const sub2 = function (num1, num2) {
+        return num1 - num2;
+      };
+      // arrow function
+      const mult2 = (num1, num2) => num1 * num2;
+
+      // example of using a callback to pull it all together
+      function performOperation(operation) {
+        // the argument 'operation' is a function...so when we are ready we can call that function in our code below
+        const total = operation(
+          getNum('stretchNumber1'),
+          getNum('stretchNumber2')
+        );
+        updateTotal(total);
+      }
+
+  </script>
+</body>
+
+</html>

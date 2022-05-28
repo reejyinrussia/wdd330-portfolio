@@ -1,11 +1,12 @@
+// import { qs, writeStore, readStore, bind } from './utils.js';
+
 const todoInput = document.querySelector(".todoInput input"),
 filters = document.querySelectorAll(".filters span"),
 clearAll = document.querySelector(".clearBtn"),
 addTodo = document.querySelector(".addBtn"),
 todoBox = document.querySelector(".todoBox");
 
-let editId,
-todos = JSON.parse(localStorage.getItem("todo-list"));
+let todos = JSON.parse(localStorage.getItem("todo-list"));
 
 filters.forEach(btn => {
     btn.addEventListener("click", () => {

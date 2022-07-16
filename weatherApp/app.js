@@ -36,14 +36,6 @@ const saveBtn = document.querySelector('#saveCity');
 saveBtn.addEventListener('click', () => {
   addCity();
 })
-// input.addEventListener('keypress', (ev) => {
-//   if (ev.key === 'Enter') {
-//     addCity();
-//   }
-// })
-// modal.addEventListener('shown.bs.modal', () => {
-//   input.focus();
-// })
 
 function addCity() {
   const city = new City(input.value, app);

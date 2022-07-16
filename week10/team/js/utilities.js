@@ -17,3 +17,11 @@ export const getLocation = function (options) {
     navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
 };
+
+export function readFromStore(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+export function writeToStore(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}

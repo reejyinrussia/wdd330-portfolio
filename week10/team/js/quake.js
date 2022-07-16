@@ -1,4 +1,4 @@
-import { getJSON } from './utilities.js';
+import { getJSON, writeToStore, readFromStore } from './utilities.js';
 // Quake Model
 export default class Quake {
   constructor() {
@@ -13,6 +13,7 @@ export default class Quake {
       `&starttime=2019-01-01&endtime=2019-03-02&latitude=${position.lat
       }&longitude=${position.lon}&maxradiuskm=${radius}`
     );
+    console.log(this._quakes);
     return this._quakes;
   }
   getQuakeById(id) {

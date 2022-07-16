@@ -25,7 +25,7 @@ export default class QuakesController {
         const posFull = await getLocation();
         this.position.lat = posFull.coords.latitude;
         this.position.lon = posFull.coords.longitude;
-        //console.log(posFull);
+        console.log(posFull);
       } catch (error) {
         console.log(error);
       }
@@ -34,7 +34,7 @@ export default class QuakesController {
 
   async getQuakesByRadius(radius = 100) {
     //set loading message
-    this.parentElement.innerHTML = '<li>Loading...</li>';
+    this.parentElement.innerHTML = 'Loading...';
     // get the list of quakes in the specified radius of the location
     const quakeList = await this.quakes.getEarthQuakesByRadius(
       this.position,

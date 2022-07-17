@@ -4,7 +4,6 @@ import { saveToStore, readFromStore } from "./utils.js"
 class App {
   constructor(element) {
     this.element = element;
-    
     let cities = readFromStore('cities');
     
     this.cities = cities.map(c => new City(c.name, this));
@@ -40,6 +39,4 @@ saveBtn.addEventListener('click', () => {
 function addCity() {
   const city = new City(input.value, app);
   app.addCity(city);
-  bootstrapModal.hide();
-  input.value = '';
 }

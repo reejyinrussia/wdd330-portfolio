@@ -4,7 +4,11 @@ import { saveToStore, readFromStore } from "./utils.js"
 class App {
   constructor(element) {
     this.element = element;
-    let cities = readFromStore('cities');
+    const citiesJson = localStorage.getItem('cities');
+    let cities = [];
+    if (citiesJson) {
+      cities = JSON.parse(citiesJson);
+    }
     
     this.cities = cities.map(c => new City(c.name, this));
     this.render();
